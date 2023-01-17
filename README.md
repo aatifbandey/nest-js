@@ -30,6 +30,7 @@
 
 ```bash
 $ yarn install
+yarn install --ignore-engines
 ```
 
 ## Running the app
