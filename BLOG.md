@@ -116,3 +116,27 @@ Now we need to encrypt the  password
 
 
 To load the env file we need config module from nestjs/config
+
+To protect routes like users/me etc we will use Guard from nest-js
+the guard will be called in the controllers 
+The UserGaurd will use some strategy like jwt as provided by us 
+
+// code example of UserController
+
+
+now u can see if you hit /users/me it says 401 unauthorized
+
+Lets create a resusable guard for all our routes to follow strategy
+and move the Guard on top of user controller rather than for each route
+
+create a folder called gaurd under auth folder
+
+Lets create a custom decorator, create a folder called decorator under auth
+and use the same in User controller.ts
+
+
+Configure HTTP Status code via http decorator 
+
+// End to end testing
+
+For end to end testing we will use pactum js
