@@ -1,8 +1,10 @@
 pipeline {
-    agent none
-     environment {
-            CI = 'true'
-        }
+    agent {
+        label 'docker'
+    }
+    environment {
+      CI = 'true'
+    }
     stages {
         stage('Build') {
             steps {
