@@ -1,8 +1,8 @@
 pipeline {
-    agent any
-    environment {
-      CI = 'true'
-    }
+    agent { label 'master' }
+
+    tools { nodejs "nodejs" }
+    
     stages {
         stage('Build') {
             steps {
