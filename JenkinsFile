@@ -1,23 +1,18 @@
-import groovy.transform.Field
-
-@Field def VAR1 = 'build architectures'
-
-def BuildANew(variables)
-{
-   echo "Build declaration"
-   build job: 'LocalJenkins', parameters:[
-        extendedChoice(name: 'VAR1', value: ${VAR1}),
-        param(name:'Variables', value:variables)
-    ]
-}
-
 pipeline {
-    
     agent any
     
-    tools {'nodejs' node }
-    
+    environment {
+        CI = 'true'
+    }
     stages {
+        stage("init") {
+            steps {
+                script {
+                   gv = load "script.groovy" 
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'npm install'
