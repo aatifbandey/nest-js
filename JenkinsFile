@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     
@@ -5,7 +7,13 @@ pipeline {
         CI = 'true'
     }
     stages {
-      
+        stage("init") {
+            steps {
+                script {
+                   gv = load "script.groovy" 
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'

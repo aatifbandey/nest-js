@@ -15,7 +15,7 @@ import { ProductModule } from './product/product.module';
     UserModule,
     BookmarkModule,
     ProductModule,
-    PrismaModule
+    PrismaModule,
   ],
   controllers: [],
   providers: [],
