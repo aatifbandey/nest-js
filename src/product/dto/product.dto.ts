@@ -1,4 +1,5 @@
 import { IsNotEmpty, isNotEmpty, IsNumber, isNumber, IsString } from "class-validator";
+import { ProductLinkDto } from "./productLink.dto";
 
 export class ProductDto {
   @IsString()
@@ -10,6 +11,8 @@ export class ProductDto {
   price: number;
 
   description?: string;
+
+  productLink?: ProductLinkDto;
 }
 
 export class ProductIdDto {

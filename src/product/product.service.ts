@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Prisma, prisma } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
@@ -53,6 +53,35 @@ export class ProductService {
           throw new ForbiddenException('Error');
         }
       }
+      throw error;
+    }
+  }
+
+  async getProductDetails(id: number) {
+    try {
+      const prod = await this.prisma.product.findFirst({
+        where:{
+          id: id
+        }
+      })
+      if(!prod) {
+        throw new HttpException('Product not found', HttpStatus.BAD_REQUEST)
+      }
+     
+      return {
+        id: prod.id,
+        title: prod.title,
+        description: prod.description
+      }
+    }
+    catch(error) {
+      // if (error instanceof PrismaClientKnownRequestError) {
+      //   console.log(error);
+      //   // if (error.code === 'P2002') {
+      //   //   // P2002 is error code from prismafor duplicate entry
+      //   //   throw new ForbiddenException('Error');
+      //   // }
+      // }
       throw error;
     }
   }

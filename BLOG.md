@@ -43,7 +43,7 @@ npx prisma studio
 
 I hope you will see such screen in your browser
 
-Now lets create a moduel to acess db from our exisiting modules
+Now lets create a module to acess db from our exisiting modules
 
 nest g module prisma
 
